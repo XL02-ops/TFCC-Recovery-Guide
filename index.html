@@ -1,0 +1,2155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#007aff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<title>TFCC Recovery Tips</title>
+
+<script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
+
+<style>
+
+:root{
+    --bg:#f5f7fb;
+    --card:#ffffff;
+    --primary:#007aff;
+    --primary-light:#ebf5ff;
+    --text:#1d1d1f;
+    --sub:#6e6e73;
+    --success:#34c759;
+    --danger:#ff3b30;
+    --warning:#ff9500;
+    --border:#e5e7eb;
+    --radius:24px;
+    --shadow:0 10px 40px rgba(0,0,0,.05);
+}
+
+*{
+    box-sizing:border-box;
+    -webkit-font-smoothing:antialiased;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC",sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+/* 免责声明条 */
+.disclaimer-bar{
+    background:#fff3cd;
+    padding:12px 24px;
+    text-align:center;
+    border-bottom:1px solid #ffc107;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.disclaimer-bar button{
+    background:none;
+    border:none;
+    color:#856404;
+    text-decoration:underline;
+    cursor:pointer;
+    font-weight:600;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(255,255,255,.8);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--border);
+}
+
+.header-inner{
+    max-width:1400px;
+    margin:auto;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.logo-box{
+    width:50px;
+    height:50px;
+    border-radius:16px;
+    background:linear-gradient(135deg,#007aff,#5ac8fa);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+}
+
+.logo h1{
+    margin:0;
+    font-size:22px;
+}
+
+.logo p{
+    margin:2px 0 0;
+    color:var(--sub);
+    font-size:13px;
+}
+
+.badge{
+    background:var(--primary-light);
+    color:var(--primary);
+    padding:10px 16px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:700;
+}
+
+.layout{
+    max-width:1400px;
+    margin:30px auto;
+    padding:0 24px;
+    display:grid;
+    grid-template-columns:260px 1fr;
+    gap:30px;
+}
+
+.sidebar{
+    position:sticky;
+    top:100px;
+    height:fit-content;
+}
+
+.nav{
+    background:var(--card);
+    border-radius:24px;
+    border:1px solid var(--border);
+    padding:16px;
+    box-shadow:var(--shadow);
+}
+
+.nav a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px;
+    border-radius:16px;
+    text-decoration:none;
+    color:var(--text);
+    font-weight:600;
+    transition:.2s;
+    margin-bottom:8px;
+    min-height:44px;
+}
+
+.nav a:hover{
+    background:var(--primary-light);
+    color:var(--primary);
+}
+
+.content{
+    display:flex;
+    flex-direction:column;
+    gap:28px;
+}
+
+.card{
+    background:var(--card);
+    border-radius:28px;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    padding:32px;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:24px;
+}
+
+.section-title h2{
+    margin:0;
+    font-size:28px;
+}
+
+.hero{
+    background:
+    radial-gradient(circle at top right, rgba(0,122,255,.12), transparent 30%),
+    linear-gradient(135deg,#ffffff,#f8fbff);
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:30px;
+    align-items:center;
+}
+
+.hero h1{
+    font-size:42px;
+    margin:0 0 14px;
+    line-height:1.1;
+}
+
+.hero p{
+    color:var(--sub);
+    line-height:1.9;
+}
+
+.quote{
+    margin-top:24px;
+    background:white;
+    border:1px solid var(--border);
+    padding:18px;
+    border-radius:18px;
+    font-weight:600;
+}
+
+/* TFCC解剖结构 */
+.anatomy-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    align-items:start;
+}
+
+.anatomy-img{
+    width:100%;
+    border-radius:16px;
+    border:1px solid var(--border);
+}
+
+.mechanism-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-top:24px;
+}
+
+.mech-card{
+    background:#fafcff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:20px;
+    text-align:center;
+}
+
+.mech-card h4{
+    margin:0 0 10px;
+    font-size:16px;
+}
+
+.mech-card p{
+    color:var(--sub);
+    font-size:13px;
+    line-height:1.6;
+    margin:0;
+}
+
+/* 康复阶段选择器 */
+.stage-selector{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.stage-card{
+    background:white;
+    border:2px solid var(--border);
+    border-radius:20px;
+    padding:24px;
+    cursor:pointer;
+    transition:.3s;
+    text-align:center;
+}
+
+.stage-card:hover{
+    border-color:var(--primary);
+    transform:translateY(-2px);
+    box-shadow:0 8px 24px rgba(0,122,255,.15);
+}
+
+.stage-card.active{
+    border-color:var(--primary);
+    background:var(--primary-light);
+}
+
+.stage-icon{
+    font-size:32px;
+    display:block;
+    margin-bottom:12px;
+}
+
+.stage-card h4{
+    margin:0 0 8px;
+    font-size:16px;
+}
+
+.stage-card p{
+    margin:0;
+    color:var(--sub);
+    font-size:13px;
+}
+
+.selfcheck-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.self-card{
+    border-radius:22px;
+    border:1px solid var(--border);
+    padding:22px;
+    background:#fafcff;
+}
+
+.self-card h3{
+    margin:14px 0 10px;
+}
+
+.self-card p{
+    color:var(--sub);
+    font-size:14px;
+    line-height:1.7;
+}
+
+.result-box{
+    margin-top:14px;
+    border-radius:12px;
+    padding:12px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.result-danger{
+    background:#fff5f5;
+    color:var(--danger);
+}
+
+.result-warning{
+    background:#fff8ef;
+    color:var(--warning);
+}
+
+.exercise-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+}
+
+.ex-card{
+    border:1px solid var(--border);
+    border-radius:24px;
+    overflow:hidden;
+    background:#fff;
+    transition:.3s;
+}
+
+.ex-card.hidden{
+    display:none;
+}
+
+.ex-image{
+    height:240px;
+    background:#f8f9fb;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-bottom:1px solid var(--border);
+    overflow:hidden;
+    position:relative;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.ex-image:hover{
+    opacity:.9;
+}
+
+.ex-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.ex-image-overlay{
+    position:absolute;
+    bottom:10px;
+    right:10px;
+    background:rgba(0,0,0,.6);
+    color:white;
+    padding:6px 12px;
+    border-radius:8px;
+    font-size:12px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.ex-content{
+    padding:24px;
+}
+
+.ex-content h3{
+    margin:12px 0;
+}
+
+.ex-content p{
+    color:var(--sub);
+    line-height:1.8;
+    font-size:14px;
+}
+
+.ex-content ul{
+    color:var(--sub);
+    line-height:1.8;
+    font-size:14px;
+    padding-left:20px;
+}
+
+.tag{
+    display:inline-block;
+    padding:6px 10px;
+    border-radius:10px;
+    font-size:12px;
+    font-weight:700;
+}
+
+.tag-blue{
+    background:#ebf5ff;
+    color:var(--primary);
+}
+
+.tag-green{
+    background:#eafaf1;
+    color:var(--success);
+}
+
+.tag-purple{
+    background:#f3f0ff;
+    color:#8b5cf6;
+}
+
+.tag-orange{
+    background:#fff8ef;
+    color:var(--warning);
+}
+
+.stop-box{
+    margin-top:16px;
+    background:#fff5f5;
+    border-left:4px solid var(--danger);
+    border-radius:0 12px 12px 0;
+    padding:12px;
+    font-size:13px;
+    color:var(--danger);
+}
+
+.info-box{
+    margin-top:16px;
+    background:#ebf5ff;
+    border-left:4px solid var(--primary);
+    border-radius:0 12px 12px 0;
+    padding:12px;
+    font-size:13px;
+    color:var(--primary);
+}
+
+.source-link{
+    margin-top:14px;
+    padding:10px;
+    background:#f8f9fb;
+    border-radius:10px;
+    font-size:12px;
+}
+
+.source-link a{
+    color:var(--primary);
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+.source-link a:hover{
+    text-decoration:underline;
+}
+
+.office-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+}
+
+.office-card{
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:24px;
+}
+
+.office-card h3{
+    margin-top:0;
+}
+
+.office-card ul{
+    color:var(--sub);
+    line-height:2;
+    padding-left:18px;
+}
+
+.sop-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.sop-col{
+    border-radius:24px;
+    padding:24px;
+}
+
+.bad{
+    background:#fff5f5;
+    border:1px solid #ffd7d4;
+}
+
+.good{
+    background:#f4fff7;
+    border:1px solid #c7f3d5;
+}
+
+.sop-item{
+    background:white;
+    border-radius:16px;
+    padding:14px;
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    margin-top:14px;
+}
+
+.sop-item strong{
+    display:block;
+    margin-bottom:4px;
+}
+
+.sop-item span{
+    font-size:13px;
+    color:var(--sub);
+}
+
+.avoid-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
+    margin-top:20px;
+}
+
+.avoid-card{
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:24px;
+    background:#fafcff;
+}
+
+.avoid-card h3{
+    margin-top:0;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.avoid-card ul{
+    line-height:1.9;
+    color:var(--sub);
+}
+
+.warning-card{
+    background:#fff8ef;
+    border:2px solid var(--warning);
+    border-radius:24px;
+    padding:28px;
+    margin-top:20px;
+}
+
+.warning-card h3{
+    margin-top:0;
+    color:var(--warning);
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.warning-card ul{
+    line-height:2;
+    font-size:15px;
+}
+
+.warning-card strong{
+    color:var(--danger);
+}
+
+.info-card{
+    background:#f0f5ff;
+    border:2px solid var(--primary);
+    border-radius:24px;
+    padding:28px;
+    margin-top:20px;
+}
+
+.info-card h3{
+    margin-top:0;
+    color:var(--primary);
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.info-card ul, .info-card p{
+    line-height:2;
+    font-size:15px;
+    color:var(--text);
+}
+
+/* 浮动按钮 */
+.float-check{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:var(--primary);
+    color:white;
+    border:none;
+    box-shadow:0 4px 12px rgba(0,122,255,.4);
+    cursor:pointer;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.3s;
+}
+
+.float-check:hover{
+    transform:scale(1.1);
+    box-shadow:0 6px 20px rgba(0,122,255,.6);
+}
+
+/* 图片轮播弹窗 */
+.modal{
+    display:none;
+    position:fixed;
+    z-index:9999;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.9);
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-content{
+    max-width:90%;
+    max-height:90%;
+    position:relative;
+}
+
+.carousel-modal .modal-content{
+    max-width:90%;
+    max-height:90%;
+}
+
+.carousel-container{
+    position:relative;
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.carousel-container img{
+    max-width:100%;
+    max-height:80vh;
+    border-radius:16px;
+    display:none;
+}
+
+.carousel-container img.active{
+    display:block;
+}
+
+.carousel-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(0,0,0,.6);
+    color:white;
+    border:none;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.2s;
+    z-index:10;
+}
+
+.carousel-nav:hover{
+    background:rgba(0,0,0,.8);
+    transform:translateY(-50%) scale(1.1);
+}
+
+.carousel-prev{
+    left:20px;
+}
+
+.carousel-next{
+    right:20px;
+}
+
+.carousel-counter{
+    position:absolute;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(0,0,0,.7);
+    color:white;
+    padding:8px 16px;
+    border-radius:20px;
+    font-size:14px;
+}
+
+.carousel-dots{
+    position:absolute;
+    bottom:60px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:10px;
+}
+
+.carousel-dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:rgba(255,255,255,.5);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.carousel-dot.active{
+    background:white;
+    width:30px;
+    border-radius:5px;
+}
+
+.modal-close{
+    position:absolute;
+    top:-40px;
+    right:0;
+    color:white;
+    font-size:32px;
+    cursor:pointer;
+    background:rgba(255,255,255,.2);
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+}
+
+/* 自测弹窗 */
+.check-modal-content{
+    background:white;
+    padding:30px;
+    border-radius:24px;
+    max-width:500px;
+    width:90%;
+}
+
+.check-question{
+    margin:20px 0;
+}
+
+.check-question label{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px;
+    background:#f8f9fb;
+    border-radius:12px;
+    margin-bottom:10px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.check-question label:hover{
+    background:#ebf5ff;
+}
+
+.check-question input[type="checkbox"]{
+    width:20px;
+    height:20px;
+    cursor:pointer;
+}
+
+.check-result{
+    margin-top:20px;
+    padding:16px;
+    border-radius:12px;
+    font-weight:600;
+    display:none;
+}
+
+.check-result.show{
+    display:block;
+}
+
+.check-result.safe{
+    background:#eafaf1;
+    color:var(--success);
+}
+
+.check-result.caution{
+    background:#fff8ef;
+    color:var(--warning);
+}
+
+.check-result.stop{
+    background:#fff5f5;
+    color:var(--danger);
+}
+
+.footer{
+    text-align:center;
+    color:var(--sub);
+    font-size:13px;
+    padding:10px 0 50px;
+    line-height:1.8;
+}
+
+/* 移动端优化 */
+@media(max-width:1100px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .sidebar{
+        display:none;
+    }
+
+    .hero-grid,
+    .anatomy-grid,
+    .selfcheck-grid,
+    .exercise-grid,
+    .office-grid,
+    .sop-grid,
+    .avoid-grid,
+    .stage-selector,
+    .mechanism-grid{
+        grid-template-columns:1fr;
+    }
+    
+    .section-title h2{
+        font-size:24px;
+    }
+    
+    .hero h1{
+        font-size:32px;
+    }
+    
+    .card{
+        padding:24px;
+    }
+    
+    .ex-image{
+        height:200px;
+    }
+    
+    .carousel-nav{
+        width:44px !important;
+        height:44px !important;
+    }
+    
+    .carousel-prev{
+        left:10px;
+    }
+    
+    .carousel-next{
+        right:10px;
+    }
+    
+    .float-check{
+        width:56px;
+        height:56px;
+        bottom:20px;
+        right:20px;
+    }
+    
+    .disclaimer-bar{
+        font-size:13px;
+        padding:10px 16px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- 免责声明 -->
+<div class="disclaimer-bar" id="disclaimerBar">
+    <span>⚠️ 本页面仅供健康教育参考，不替代专业医疗诊断。如症状持续或加重，请咨询手外科医生。</span>
+    <button onclick="document.getElementById('disclaimerBar').style.display='none'">我知道了</button>
+</div>
+
+<header>
+<div class="header-inner">
+
+    <div class="logo">
+
+        <div class="logo-box">
+            <i data-lucide="shield-check"></i>
+        </div>
+
+        <div>
+            <h1>TFCC Recovery Tips</h1>
+            <p>长期电脑办公 / 日常恢复支持</p>
+        </div>
+
+    </div>
+
+    <div class="badge">
+        Chronic Recovery Mode
+    </div>
+
+</div>
+</header>
+
+<div class="layout">
+
+<!-- Sidebar -->
+
+<aside class="sidebar">
+
+<div class="nav">
+
+<a href="#intro">
+<i data-lucide="home"></i>
+恢复原则
+</a>
+
+<a href="#anatomy">
+<i data-lucide="brain"></i>
+TFCC 认知
+</a>
+
+<a href="#selfcheck">
+<i data-lucide="activity"></i>
+状态自查
+</a>
+
+<a href="#avoid">
+<i data-lucide="x-circle"></i>
+避免事项
+</a>
+
+<a href="#exercise">
+<i data-lucide="heart-pulse"></i>
+康复动作
+</a>
+
+<a href="#office">
+<i data-lucide="monitor"></i>
+办公系统
+</a>
+
+<a href="#daily">
+<i data-lucide="shield-alert"></i>
+日常 SOP
+</a>
+
+<a href="#treatment">
+<i data-lucide="stethoscope"></i>
+治疗选项
+</a>
+
+<a href="#warning">
+<i data-lucide="alert-triangle"></i>
+就医信号
+</a>
+
+</div>
+
+</aside>
+
+<!-- Main -->
+
+<main class="content">
+
+<!-- HERO -->
+
+<section class="card hero" id="intro">
+
+<div class="hero-grid">
+
+<div>
+
+<h1>
+长期 TFCC 的重点，<br>
+是"稳定生活"。<br>
+</h1>
+
+<p>
+对于长期电脑办公的人来说，
+真正容易反复刺激 TFCC 的，
+往往不是一次大的动作，
+而是：
+<br><br>
+
+长时间鼠标操作、
+手腕悬空、
+单手拎包、
+手机小拇指承重、
+以及长期重复的轻微扭转。
+
+<br><br>
+
+恢复的目标，
+不是完全不用手，
+而是：
+<strong>让手腕重新拥有长期耐受能力。</strong>
+
+</p>
+
+<div class="quote">
+"减少刺激 + 改善支撑 + 逐渐恢复稳定控制"
+通常比疯狂休息更重要。
+</div>
+
+</div>
+
+<div>
+
+<svg width="100%" height="320" viewBox="0 0 360 320">
+
+<rect x="50" y="70" width="240" height="140" rx="30"
+fill="#ffffff" stroke="#dbe7f5" stroke-width="2"/>
+
+<rect x="80" y="100" width="180" height="18" rx="9"
+fill="#ebf5ff"/>
+
+<rect x="80" y="140" width="120" height="18" rx="9"
+fill="#f0f2f5"/>
+
+<rect x="80" y="180" width="160" height="18" rx="9"
+fill="#f0f2f5"/>
+
+<circle cx="280" cy="60" r="30" fill="#007aff22"/>
+<circle cx="70" cy="240" r="22" fill="#34c75922"/>
+
+</svg>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TFCC 解剖认知 -->
+
+<section class="card" id="anatomy">
+
+<div class="section-title">
+<i data-lucide="brain"></i>
+<h2>TFCC 是什么？为什么会痛？</h2>
+</div>
+
+<div class="anatomy-grid">
+
+<div>
+<img src="tfcc.png" 
+     alt="TFCC解剖结构图" 
+     class="anatomy-img"
+     onclick="openCarousel(['tfcc.png'], 0)" 
+     style="cursor:pointer;" />
+</p>
+</div>
+
+<div>
+
+<h3 style="margin-top:0;">三角纤维软骨复合体（TFCC）</h3>
+
+<p style="color:var(--sub);line-height:1.9;">
+位于手腕尺侧（小拇指一侧），是一组纤维软骨和韧带的组合。
+</p>
+
+<p style="color:var(--text);font-weight:600;margin-top:16px;">主要功能：</p>
+
+<ul style="color:var(--sub);line-height:1.9;">
+<li>稳定远端桡尺关节（DRUJ）</li>
+<li>缓冲尺骨与腕骨之间的压力</li>
+<li>允许前臂旋转时的微动</li>
+<li>承担约20%的手腕负重</li>
+</ul>
+
+<div class="warning-card" style="margin-top:20px;">
+<h4 style="margin:0 0 10px;color:var(--danger);">为什么容易受伤？</h4>
+<p style="margin:0;font-size:14px;">
+长期鼠标使用、手腕尺偏位、旋转动作会造成持续<strong>剪切力</strong>，导致TFCC磨损或撕裂。加上血供较差，恢复缓慢。
+</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- 触发机制分类 -->
+<h3 style="margin-top:40px;margin-bottom:20px;">三类损伤触发机制</h3>
+
+<div class="mechanism-grid">
+
+<div class="mech-card">
+<h4>🔴 压缩型负荷</h4>
+<p>手撑地、俯卧撑<br>→ TFCC受压迫</p>
+</div>
+
+<div class="mech-card">
+<h4>🟠 剪切型负荷</h4>
+<p>尺偏 + 旋转<br>→ TFCC撕裂风险</p>
+</div>
+
+<div class="mech-card">
+<h4>🟡 持续性微损伤</h4>
+<p>长时间鼠标/手机<br>→ 慢性炎症累积</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- Self Check -->
+
+<section class="card" id="selfcheck">
+
+<div class="section-title">
+<i data-lucide="activity"></i>
+<h2>当前状态自查系统</h2>
+</div>
+
+<div class="selfcheck-grid">
+
+<div class="self-card">
+
+<i data-lucide="hand"></i>
+
+<h3>按压测试</h3>
+
+<p>
+轻轻按压尺骨小头附近的凹陷区域。
+如果明显刺痛、
+酸胀增加，
+说明当前刺激较高。
+</p>
+
+<div class="result-box result-danger">
+疼痛明显：建议降低负荷 + 减少鼠标使用
+</div>
+
+</div>
+
+<div class="self-card">
+
+<i data-lucide="rotate-cw"></i>
+
+<h3>旋转测试</h3>
+
+<p>
+缓慢做旋前 / 旋后动作。
+如果在末端出现明显不适、
+发虚、
+卡顿感，
+说明当前稳定性不足。
+</p>
+
+<div class="result-box result-warning">
+末端疼痛：避免拧转动作
+</div>
+
+</div>
+
+<div class="self-card">
+
+<i data-lucide="mouse-pointer-click"></i>
+
+<h3>办公耐受测试</h3>
+
+<p>
+连续使用鼠标 20~30 分钟后，
+观察尺侧是否开始紧张、
+发酸、
+疲劳感明显。
+</p>
+
+<div class="result-box result-warning">
+疲劳明显：需要增加微休息频率
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Avoid Actions -->
+
+<section class="card" id="avoid">
+
+<div class="section-title">
+<i data-lucide="x-circle"></i>
+<h2>核心避免事项</h2>
+</div>
+
+<p style="color:var(--sub);line-height:1.8;margin-bottom:20px;">
+这些动作和姿势是 TFCC 反复刺激的主要来源，比任何康复训练都更重要的是：<strong>先减少持续伤害</strong>。
+</p>
+
+<div class="avoid-grid">
+
+<div class="avoid-card">
+
+<h3>
+<i data-lucide="hand"></i>
+避免长时间撑腕
+</h3>
+
+<p style="color:var(--danger);font-weight:600;">
+❌ 尽量避免：
+</p>
+
+<ul>
+<li>俯卧撑</li>
+<li>平板支撑</li>
+<li>手撑桌子起身</li>
+<li>床上撑起身体</li>
+</ul>
+
+<div class="info-box">
+如果必须：可以改用握拳撑、俯卧撑支架、或前臂支撑，减少腕关节背伸压迫。
+</div>
+
+</div>
+
+<div class="avoid-card">
+
+<h3>
+<i data-lucide="move-diagonal"></i>
+减少尺偏位
+</h3>
+
+<p style="color:var(--sub);line-height:1.8;margin-bottom:10px;">
+<strong>尺偏位</strong> 就是手腕向小拇指方向歪斜的姿势。
+</p>
+
+<p style="color:var(--danger);font-weight:600;">
+这是 TFCC 的高压位！
+</p>
+
+<p style="color:var(--sub);line-height:1.8;margin-top:12px;">
+很多人在以下情况会长期保持这个姿势：
+</p>
+
+<ul>
+<li>使用鼠标时</li>
+<li>托腮</li>
+<li>端手机</li>
+<li>侧躺玩手机</li>
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Exercise -->
+
+<section class="card" id="exercise">
+
+<div class="section-title">
+<i data-lucide="heart-pulse"></i>
+<h2>分阶段康复训练体系</h2>
+</div>
+
+<p style="color:var(--sub);line-height:1.8;margin-bottom:24px;">
+TFCC 康复不是"练越多越好"，而是<strong>选对阶段、循序渐进</strong>。请根据当前状态选择对应阶段的训练。
+</p>
+
+<!-- 阶段选择器 -->
+<div class="stage-selector">
+
+<div class="stage-card active" data-stage="1" onclick="filterByStage(1)">
+<span class="stage-icon">🟢</span>
+<h4>急性期 (1-2周)</h4>
+<p>疼痛明显、不敢发力</p>
+</div>
+
+<div class="stage-card" data-stage="2" onclick="filterByStage(2)">
+<span class="stage-icon">🟡</span>
+<h4>恢复期 (2-6周)</h4>
+<p>疼痛减轻、可轻度活动</p>
+</div>
+
+<div class="stage-card" data-stage="3" onclick="filterByStage(3)">
+<span class="stage-icon">🔵</span>
+<h4>强化期 (6周+)</h4>
+<p>基本无痛、准备回归日常</p>
+</div>
+
+</div>
+
+<div style="margin-bottom:24px;">
+<a href="https://www.chelwest.nhs.uk/your-visit/patient-leaflets/hand-therapy/active-wrist-exercises" 
+   target="_blank"
+   style="background:var(--primary);color:white;border:none;padding:12px 24px;border-radius:12px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-weight:600;text-decoration:none;min-height:44px;">
+<i data-lucide="external-link" style="width:16px;height:16px;"></i>
+查看 NHS 完整腕部训练指南
+</a>
+</div>
+
+<div class="exercise-grid">
+
+<!-- EX1 - 急性期 -->
+<div class="ex-card" data-stages="1,2">
+
+<div class="ex-image" onclick="openCarousel(['等长训练1.jpg', '等长训练2.jpg'], 0)">
+<img src="等长训练1.jpg" alt="等长训练示意图" />
+<div class="ex-image-overlay">
+<i data-lucide="images" style="width:14px;height:14px;"></i>
+共 2 张图片 · 点击查看
+</div>
+</div>
+
+<div class="ex-content">
+
+<span class="tag tag-blue">
+🟢 急性期 - 最重要
+</span>
+
+<h3>1. 等长训练（Isometric）</h3>
+
+<p>
+<strong>核心原则：</strong>先不大幅活动。
+</p>
+
+<p>
+手腕保持中立位，另一只手给予轻微对抗阻力，重点不是力量，而是"稳住不晃"。
+</p>
+
+<ul>
+<li>每次保持 10-20 秒</li>
+<li>无明显疼痛</li>
+<li>非常适合长期办公后、手腕发虚的时候</li>
+</ul>
+
+<p>
+<strong>优点：</strong>
+</p>
+<ul>
+<li>对 TFCC 刺激较小</li>
+<li>能重新建立稳定感</li>
+</ul>
+
+<div class="source-link">
+<a href="https://www.cuh.nhs.uk/patient-information/hand-therapy-isometric-wrist-exercises/" target="_blank">
+<i data-lucide="external-link" style="width:14px;height:14px;"></i>
+Cambridge University Hospitals - 等长训练指南
+</a>
+</div>
+
+<div class="stop-box">
+如果出现明显锐痛、刺痛、不稳定感加重，立即停止。
+</div>
+
+</div>
+
+</div>
+
+<!-- EX2 - 恢复期 -->
+<div class="ex-card" data-stages="2,3">
+
+<div class="ex-image" onclick="openCarousel(['旋前旋后1.jpg', '旋前旋后2.jpg', '旋前旋后3.jpg'], 0)">
+<img src="旋前旋后1.jpg" alt="旋前旋后训练" />
+<div class="ex-image-overlay">
+<i data-lucide="images" style="width:14px;height:14px;"></i>
+共 3 张图片 · 点击查看
+</div>
+</div>
+
+<div class="ex-content">
+
+<span class="tag tag-green">
+🟡 恢复期 - 核心训练
+</span>
+
+<h3>2. 轻阻力旋前/旋后</h3>
+
+<p>
+<strong>这是 TFCC 康复核心之一</strong>
+</p>
+
+<p>
+手握轻量长柄物体（小锤子、弹力带、0.5-1kg），极慢速地向两侧旋转。
+</p>
+
+<p>
+<strong>但必须：</strong>
+</p>
+
+<ul>
+<li>超轻重量</li>
+<li>慢速控制</li>
+<li>无明显疼痛</li>
+<li>12-15 次/组</li>
+</ul>
+
+<div class="source-link">
+<a href="https://www.southtees.nhs.uk/resources/wrist-range-of-movement/" target="_blank">
+<i data-lucide="external-link" style="width:14px;height:14px;"></i>
+South Tees NHS Trust - 腕部活动度训练
+</a>
+</div>
+
+<div class="source-link">
+<a href="https://www.rehabhero.ca/exercise/isometric-wrist-pronation" target="_blank">
+<i data-lucide="external-link" style="width:14px;height:14px;"></i>
+Rehab Hero - 旋前/旋后控制训练
+</a>
+</div>
+
+<div class="stop-box" style="border-color:var(--warning);color:var(--warning);background:#fff8ef;">
+不要在疼痛末端硬顶！重点是"慢"而不是"大幅度"。
+</div>
+
+</div>
+
+</div>
+
+<!-- EX3 - 强化期 -->
+<div class="ex-card" data-stages="3">
+
+<div class="ex-image" onclick="openCarousel(['Hammer leverage rehab1.jpg', 'Hammer leverage rehab2.jpg'], 0)">
+<img src="Hammer leverage rehab1.jpg" alt="锤子杠杆训练" />
+<div class="ex-image-overlay">
+<i data-lucide="images" style="width:14px;height:14px;"></i>
+共 2 张图片 · 点击查看
+</div>
+</div>
+
+<div class="ex-content">
+
+<span class="tag tag-purple">
+🔵 强化期 - 渐进负荷
+</span>
+
+<h3>3. 锤子/杠杆训练</h3>
+
+<p>
+<strong>用于渐进负荷 + TFCC 稳定控制</strong>
+</p>
+
+<p>
+使用小锤子或类似物体，通过杠杆原理进行控制性训练。
+</p>
+
+<p>
+<strong>推荐方式：</strong>
+</p>
+
+<ul>
+<li>从极轻重量开始</li>
+<li>重点是控制，不是幅度</li>
+<li>配合旋前/旋后动作</li>
+<li>缓慢、稳定、可控</li>
+</ul>
+
+<div class="source-link">
+<a href="https://www.rehabhero.ca/exercise/isometric-wrist-pronation" target="_blank">
+<i data-lucide="external-link" style="width:14px;height:14px;"></i>
+Rehab Hero - 锤子杠杆训练
+</a>
+</div>
+
+<div class="info-box">
+这是中期康复的重要训练，可以帮助重建 TFCC 的旋转控制能力。
+</div>
+
+</div>
+
+</div>
+
+<!-- EX4 - 恢复期/强化期 -->
+<div class="ex-card" data-stages="2,3">
+
+<div class="ex-image" onclick="openCarousel(['弹力带腕部1.jpg', '弹力带腕部2.jpg', '弹力带腕部3.jpg'], 0)">
+<img src="弹力带腕部1.jpg" alt="弹力带训练" />
+<div class="ex-image-overlay">
+<i data-lucide="images" style="width:14px;height:14px;"></i>
+共 3 张图片 · 点击查看
+</div>
+</div>
+
+<div class="ex-content">
+
+<span class="tag tag-orange">
+🟡 恢复期 - 辅助训练
+</span>
+
+<h3>4. 弹力带腕部训练</h3>
+
+<p>
+轻量腕屈伸、握力训练，帮助建立周围肌群支撑。
+</p>
+
+<ul>
+<li>使用极轻阻力弹力带</li>
+<li>避免疼痛范围</li>
+<li>重点是控制，不是力量</li>
+<li>可结合旋前/旋后动作</li>
+</ul>
+
+<div class="source-link">
+<a href="https://healthy.kaiserpermanente.org/health-wellness/health-encyclopedia/he.wrist-sprain-rehab-exercises.bo1522" target="_blank">
+<i data-lucide="external-link" style="width:14px;height:14px;"></i>
+Kaiser Permanente - 腕部康复综合训练
+</a>
+</div>
+
+<div class="source-link">
+<a href="https://myhealth.alberta.ca/Health/aftercareinformation/pages/conditions.aspx?hwid=bo1522" target="_blank">
+<i data-lucide="external-link" style="width:14px;height:14px;"></i>
+MyHealth Alberta - 腕部康复训练完整指南
+</a>
+</div>
+
+<div class="info-box">
+只在没有明显疼痛时进行，不要急于增加阻力。
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Office -->
+
+<section class="card" id="office">
+
+<div class="section-title">
+<i data-lucide="monitor"></i>
+<h2>长期办公生存系统</h2>
+</div>
+
+<div class="office-grid">
+
+<div class="office-card">
+
+<h3>
+✅ 推荐办公方式
+</h3>
+
+<ul>
+<li>前臂必须有支撑，而不是只有手腕受力</li>
+<li>鼠标靠近身体，避免手臂长期外展</li>
+<li>优先考虑垂直鼠标 / 人体工学鼠标</li>
+<li>键盘不要太高，避免长期翘腕</li>
+<li>每 30~40 分钟改变一次姿势</li>
+<li>避免连续几小时保持一个姿势</li>
+</ul>
+
+</div>
+
+<div class="office-card">
+
+<h3>
+❌ 常见隐藏刺激源
+</h3>
+
+<ul>
+<li>小拇指托手机</li>
+<li>长时间 Trackpad</li>
+<li>手腕悬空用鼠标</li>
+<li>侧躺玩手机</li>
+<li>单手拎电脑包</li>
+<li>长期撑桌起身</li>
+</ul>
+
+</div>
+
+</div>
+
+<br><br>
+
+<!-- SVG -->
+
+<div style="background:#fafcff;border-radius:24px;padding:30px;border:1px solid var(--border)">
+
+<svg width="100%" height="260" viewBox="0 0 700 260">
+
+<!-- Desk -->
+<rect x="100" y="120" width="500" height="18" rx="9"
+fill="#dfe5ee"/>
+
+<!-- Keyboard -->
+<rect x="260" y="90" width="180" height="28" rx="8"
+fill="#eceff4"/>
+
+<!-- Mouse -->
+<ellipse cx="490" cy="105" rx="18" ry="24"
+fill="#d8e8ff"/>
+
+<!-- Forearm -->
+<rect x="470" y="125" width="110" height="22" rx="11"
+fill="#34c75955"/>
+
+<!-- Wrist -->
+<circle cx="470" cy="136" r="14"
+fill="#34c759aa"/>
+
+<!-- Danger -->
+<circle cx="620" cy="136" r="18"
+fill="#ff3b3022"
+stroke="#ff3b30"
+stroke-width="2"/>
+
+<text x="620" y="170"
+font-size="13"
+text-anchor="middle"
+fill="#ff3b30">
+手腕悬空
+</text>
+
+<!-- Safe -->
+<text x="520" y="185"
+font-size="13"
+text-anchor="middle"
+fill="#34c759">
+前臂支撑区
+</text>
+
+<!-- Labels -->
+
+<text x="350" y="70"
+font-size="15"
+text-anchor="middle"
+fill="#6e6e73">
+理想状态：前臂支撑，而不是手腕单独承重
+</text>
+
+</svg>
+
+</div>
+
+</section>
+
+<!-- Daily SOP -->
+
+<section class="card" id="daily">
+
+<div class="section-title">
+<i data-lucide="shield-alert"></i>
+<h2>日常避免 / 替代 SOP</h2>
+</div>
+
+<div class="sop-grid">
+
+<div class="sop-col bad">
+
+<h3 style="margin-top:0;color:var(--danger)">
+❌ 尽量避免
+</h3>
+
+<div class="sop-item">
+<i data-lucide="briefcase"></i>
+<div>
+<strong>单手拎电脑包</strong>
+<span>长时间尺侧牵拉。</span>
+</div>
+</div>
+
+<div class="sop-item">
+<i data-lucide="smartphone"></i>
+<div>
+<strong>小拇指托手机</strong>
+<span>长时间单手使用手机易对手腕造成较大压力。</span>
+</div>
+</div>
+
+<div class="sop-item">
+<i data-lucide="rotate-cw"></i>
+<div>
+<strong>拧瓶盖 / 毛巾</strong>
+<span>旋转 + 发力刺激很大。</span>
+</div>
+</div>
+
+<div class="sop-item">
+<i data-lucide="mouse-pointer"></i>
+<div>
+<strong>连续数小时用鼠标</strong>
+<span>容易反复刺激。</span>
+</div>
+</div>
+
+</div>
+
+<div class="sop-col good">
+
+<h3 style="margin-top:0;color:var(--success)">
+✅ 更推荐
+</h3>
+
+<div class="sop-item">
+<i data-lucide="backpack"></i>
+<div>
+<strong>双肩包</strong>
+<span>减少手腕持续受力。</span>
+</div>
+</div>
+
+<div class="sop-item">
+<i data-lucide="pause-circle"></i>
+<div>
+<strong>微休息</strong>
+<span>频繁改变姿势。</span>
+</div>
+</div>
+
+<div class="sop-item">
+<i data-lucide="monitor-smartphone"></i>
+<div>
+<strong>前臂支撑</strong>
+<span>避免手腕孤立承重。</span>
+</div>
+</div>
+
+<div class="sop-item">
+<i data-lucide="mouse"></i>
+<div>
+<strong>人体工学鼠标</strong>
+<span>降低长期旋前压力。</span>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Treatment Options -->
+
+<section class="card" id="treatment">
+
+<div class="section-title">
+<i data-lucide="stethoscope"></i>
+<h2>理疗方案：冲击波（ESWT）</h2>
+</div>
+
+<div class="info-card">
+
+<h3>
+<i data-lucide="info"></i>
+目前证据水平
+</h3>
+
+<p>
+目前对于 TFCC 的冲击波证据<strong>并不像跟腱炎、足底筋膜炎那么强</strong>。
+</p>
+
+<p>
+TFCC 本身属于<strong>纤维软骨 + 韧带复合结构</strong>，而不是典型肌腱。
+</p>
+
+<p>
+<strong>所以冲击波更偏向于：</strong>
+</p>
+
+<ul>
+<li>辅助镇痛</li>
+<li>改善局部代谢</li>
+<li>缓解慢性炎症</li>
+</ul>
+
+<p style="color:var(--danger);font-weight:600;">
+而不是"修复撕裂"
+</p>
+
+</div>
+
+<div class="office-grid" style="margin-top:24px;">
+
+<div class="office-card">
+
+<h3>
+✅ 可能更适合尝试的情况
+</h3>
+
+<ul>
+<li>慢性疼痛</li>
+<li>长期炎症刺激</li>
+<li>康复已经停滞</li>
+<li>不想立刻手术</li>
+<li>辅助保守治疗</li>
+</ul>
+
+</div>
+
+<div class="office-card">
+
+<h3>
+⚠️ 需要谨慎的情况
+</h3>
+
+<p style="color:var(--sub);margin-bottom:12px;">
+如果存在以下情况，冲击波可能意义有限：
+</p>
+
+<ul>
+<li>明显 DRUJ 不稳</li>
+<li>一转腕就"咔"响</li>
+<li>明显无力、撑不住</li>
+<li>怀疑较大撕裂</li>
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Warning Signs -->
+
+<section class="card" id="warning">
+
+<div class="section-title">
+<i data-lucide="alert-triangle"></i>
+<h2>什么时候建议尽快看手外科</h2>
+</div>
+
+<p style="color:var(--sub);line-height:1.8;margin-bottom:20px;">
+以下是"别再硬扛"的明确信号：
+</p>
+
+<div class="warning-card">
+
+<h3>
+<i data-lucide="alert-circle"></i>
+需要专业评估的信号
+</h3>
+
+<ul>
+<li>
+<strong>明显卡顿 / 咔哒声</strong> — 尤其伴随疼痛
+</li>
+<li>
+<strong>旋转明显无力</strong> — 例如：拧瓶盖不行、端锅不稳
+</li>
+<li>
+<strong>夜间疼醒</strong> — 说明炎症程度较高
+</li>
+<li>
+<strong>越来越不敢发力</strong> — 说明稳定性可能在下降
+</li>
+<li>
+<strong>保守治疗 3-6 个月无改善</strong> — 可能需要影像学进一步评估
+</li>
+</ul>
+
+<div class="info-box" style="margin-top:20px;background:white;border-color:var(--primary);">
+如果出现以上情况，建议尽快找手外科医生进行专业评估，可能需要 MRI 或关节镜检查。
+</div>
+
+</div>
+
+</section>
+
+<div class="footer">
+TFCC Recovery Tips · Long-term Office Recovery Support System
+<br>
+本页面仅供健康教育参考，不替代专业医疗诊断。如症状持续或加重，请咨询手外科医生。
+<br><br>
+康复动作图片及指南来源：
+<a href="https://www.physio-pedia.com" target="_blank" style="color:var(--primary)">Physiopedia</a> · 
+<a href="https://www.cuh.nhs.uk" target="_blank" style="color:var(--primary)">Cambridge University Hospitals</a> · 
+<a href="https://www.southtees.nhs.uk" target="_blank" style="color:var(--primary)">South Tees NHS Trust</a> · 
+<a href="https://myhealth.alberta.ca" target="_blank" style="color:var(--primary)">Alberta Health Services</a>
+</div>
+
+</main>
+
+</div>
+
+<!-- 快速自测浮动按钮 -->
+<button class="float-check" onclick="openSelfCheckModal()">
+<i data-lucide="help-circle" style="width:28px;height:28px;"></i>
+</button>
+
+<!-- 自测弹窗 -->
+<div id="selfCheckModal" class="modal" onclick="closeSelfCheckModal()">
+<div class="check-modal-content" onclick="event.stopPropagation()">
+<h3 style="margin-top:0;">今天能训练吗？</h3>
+<p style="color:var(--sub);font-size:14px;">根据以下症状快速判断：</p>
+<div class="check-question">
+<label>
+<input type="checkbox" id="q1">
+<span>今天有明显刺痛或锐痛</span>
+</label>
+<label>
+<input type="checkbox" id="q2">
+<span>旋转手腕时有卡顿感或响声</span>
+</label>
+<label>
+<input type="checkbox" id="q3">
+<span>昨晚因疼痛影响睡眠</span>
+</label>
+<label>
+<input type="checkbox" id="q4">
+<span>手腕明显肿胀或发热</span>
+</label>
+</div>
+<button onclick="checkSelfResult()" 
+        style="width:100%;padding:14px;background:var(--primary);color:white;border:none;border-radius:12px;margin-top:20px;font-weight:600;cursor:pointer;min-height:44px;">
+查看建议
+</button>
+<div id="checkResult" class="check-result"></div>
+</div>
+</div>
+
+<!-- Image Carousel Modal -->
+<div id="carouselModal" class="modal carousel-modal" onclick="closeCarousel()">
+<div class="modal-content" onclick="event.stopPropagation()">
+<div class="modal-close" onclick="closeCarousel()">&times;</div>
+<div class="carousel-container">
+<!-- 图片容器 -->
+<div id="carouselImages"></div>
+<!-- 左右箭头 -->
+<button class="carousel-nav carousel-prev" onclick="changeSlide(-1); event.stopPropagation();">
+<i data-lucide="chevron-left"></i>
+</button>
+<button class="carousel-nav carousel-next" onclick="changeSlide(1); event.stopPropagation();">
+<i data-lucide="chevron-right"></i>
+</button>
+<!-- 计数器 -->
+<div class="carousel-counter">
+<span id="currentSlide">1</span> / <span id="totalSlides">1</span>
+</div>
+<!-- 小圆点 -->
+<div class="carousel-dots" id="carouselDots"></div>
+</div>
+</div>
+</div>
+
+<script>
+lucide.createIcons();
+
+let currentIndex = 0;
+let currentImages = [];
+
+// 打开图片轮播
+function openCarousel(images, startIndex = 0) {
+    currentImages = images;
+    currentIndex = startIndex;
+    
+    const modal = document.getElementById('carouselModal');
+    const container = document.getElementById('carouselImages');
+    const dotsContainer = document.getElementById('carouselDots');
+    
+    // 清空容器
+    container.innerHTML = '';
+    dotsContainer.innerHTML = '';
+    
+    // 创建图片
+    images.forEach((img, index) => {
+        const imgEl = document.createElement('img');
+        imgEl.src = img;
+        imgEl.className = index === startIndex ? 'active' : '';
+        imgEl.alt = '康复动作示意图';
+        container.appendChild(imgEl);
+        
+        // 创建小圆点
+        const dot = document.createElement('div');
+        dot.className = 'carousel-dot' + (index === startIndex ? ' active' : '');
+        dot.onclick = (e) => {
+            e.stopPropagation();
+            goToSlide(index);
+        };
+        dotsContainer.appendChild(dot);
+    });
+    
+    updateCounter();
+    modal.classList.add('active');
+    
+    // 重新渲染图标
+    setTimeout(() => lucide.createIcons(), 50);
+}
+
+// 切换图片
+function changeSlide(direction) {
+    const images = document.querySelectorAll('#carouselImages img');
+    const dots = document.querySelectorAll('.carousel-dot');
+    
+    images[currentIndex].classList.remove('active');
+    dots[currentIndex].classList.remove('active');
+    
+    currentIndex += direction;
+    
+    // 循环
+    if(currentIndex >= currentImages.length) currentIndex = 0;
+    if(currentIndex < 0) currentIndex = currentImages.length - 1;
+    
+    images[currentIndex].classList.add('active');
+    dots[currentIndex].classList.add('active');
+    
+    updateCounter();
+}
+
+// 跳转到指定图片
+function goToSlide(index) {
+    const images = document.querySelectorAll('#carouselImages img');
+    const dots = document.querySelectorAll('.carousel-dot');
+    
+    images[currentIndex].classList.remove('active');
+    dots[currentIndex].classList.remove('active');
+    
+    currentIndex = index;
+    
+    images[currentIndex].classList.add('active');
+    dots[currentIndex].classList.add('active');
+    
+    updateCounter();
+}
+
+// 更新计数
+function updateCounter() {
+    document.getElementById('currentSlide').textContent = currentIndex + 1;
+    document.getElementById('totalSlides').textContent = currentImages.length;
+}
+
+// 关闭轮播
+function closeCarousel() {
+    document.getElementById('carouselModal').classList.remove('active');
+}
+
+// 键盘支持
+document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('carouselModal');
+    if(modal.classList.contains('active')) {
+        if(e.key === 'ArrowLeft') changeSlide(-1);
+        if(e.key === 'ArrowRight') changeSlide(1);
+        if(e.key === 'Escape') closeCarousel();
+    }
+});
+
+// 阶段筛选功能
+function filterByStage(stage) {
+    // 更新选中状态
+    document.querySelectorAll('.stage-card').forEach(card => {
+        card.classList.remove('active');
+    });
+    document.querySelector(`.stage-card[data-stage="${stage}"]`).classList.add('active');
+    
+    // 筛选训练卡片
+    document.querySelectorAll('.ex-card').forEach(card => {
+        const stages = card.getAttribute('data-stages').split(',');
+        if(stages.includes(stage.toString())) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+}
+
+// 快速自测
+function openSelfCheckModal() {
+    document.getElementById('selfCheckModal').classList.add('active');
+    // 重置
+    document.querySelectorAll('.check-question input').forEach(input => {
+        input.checked = false;
+    });
+    document.getElementById('checkResult').classList.remove('show', 'safe', 'caution', 'stop');
+}
+
+function closeSelfCheckModal() {
+    document.getElementById('selfCheckModal').classList.remove('active');
+}
+
+function checkSelfResult() {
+    const q1 = document.getElementById('q1').checked;
+    const q2 = document.getElementById('q2').checked;
+    const q3 = document.getElementById('q3').checked;
+    const q4 = document.getElementById('q4').checked;
+    
+    const resultDiv = document.getElementById('checkResult');
+    const count = [q1, q2, q3, q4].filter(Boolean).length;
+    
+    resultDiv.classList.add('show');
+    
+    if(count === 0) {
+        resultDiv.className = 'check-result show safe';
+        resultDiv.innerHTML = '🟢 <strong>可以训练</strong><br>建议从急性期或恢复期动作开始，注意控制幅度和强度。';
+    } else if(count <= 2) {
+        resultDiv.className = 'check-result show caution';
+        resultDiv.innerHTML = '🟡 <strong>轻度训练</strong><br>仅进行等长训练，避免旋转和负重。如症状加重立即停止。';
+    } else {
+        resultDiv.className = 'check-result show stop';
+        resultDiv.innerHTML = '🔴 <strong>建议休息</strong><br>今天不适合训练，建议冰敷、休息。如症状持续超过3天请就医。';
+    }
+}
+
+// 初始化时显示急性期训练
+window.addEventListener('load', () => {
+    filterByStage(1);
+    if (window.lucide) {
+       lucide.createIcons();
+   }
+});
+</script>
+
+</body>
+</html>
